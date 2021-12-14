@@ -53,7 +53,7 @@ resource "aws_ecr_repository_policy" "default" {
       "Condition": {
         "StringLike": {
           "aws:sourceArn": [
-            ${join(",", formatlist("\"arn:aws:lambda:us-east-1:%s:function:*\"", var.trust_accounts))}
+            ${join(",", formatlist("\"arn:aws:lambda:%s:%s:function:*\"", data.aws_region.current.name, var.trust_accounts))}
           ]
         }
       }
